@@ -4,11 +4,10 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-
 import static com.epam.bdd.core.drivers.DriverManager.closeDriver;
 import static com.epam.bdd.core.drivers.DriverManager.getDriver;
 import static com.epam.bdd.core.drivers.DriverTypes.CHROME;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.Assert.assertTrue;
 
 
 public class AddToCartStep {
@@ -38,19 +37,14 @@ public class AddToCartStep {
         productpage = resultpage.selectFirstProduct();
     }
 
-    @And("^User add to cart the product$")
+    @And("^User add the product to cart$")
     public void userAddToCartTheProduct() {
-        productpage.addToCart();
+        cartpage = productpage.addToCart();
     }
 
-    @And("^User open cart$")
-    public void userOpenCart() {
-        cartpage = productpage.openCart();
-    }
-
-    @Then("^Product is displayed in cart$")
-    public void productIsDisplayedInCart() {
-        assertTrue(cartpage.productIsDispayed());
+    @Then("^Product count in cart should be (\\d+)$")
+    public void productCountInCartShouldBe(int count) {
+        assertTrue(cartpage.getCartCount().contains(String.valueOf(count)));
     }
 
     @After

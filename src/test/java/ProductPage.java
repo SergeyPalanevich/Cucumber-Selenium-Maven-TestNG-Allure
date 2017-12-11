@@ -11,22 +11,12 @@ public class ProductPage extends BasePage{
     }
 
 
-    @FindBy(id = "isCartBtn_btn")
+    @FindBy(xpath = "//a[@role='button' and @vib='vib' and @id='isCartBtn_btn']")
     public Element addToCartButton;
 
-    @FindBy(id = "gh-cart-i")
-    public Element Cart;
 
-
-    public void addToCart() {
-        waitElementToBeClickable(getDriver(CHROME) , addToCartButton);
+    public CartPage addToCart() {
         addToCartButton.click();
-    }
-
-    public CartPage openCart() {
-        waitElementToBeClickable(getDriver(CHROME) , Cart);
-        Cart.click();
         return new CartPage(getDriver(CHROME));
-
     }
 }

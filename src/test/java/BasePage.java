@@ -8,18 +8,20 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static com.epam.bdd.core.drivers.DriverManager.getDriver;
+import static com.epam.bdd.core.drivers.DriverTypes.CHROME;
+
 public class BasePage {
-    protected WebDriver driver;
+
     private static final int DRIVER_TIMEOUT = 25;
 
     protected BasePage(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(new CustomFieldDecorator(driver), this);
         waitForJSLoadComplete();
     }
 
     protected boolean waitForJSLoadComplete() {
-        WebDriverWait wait = new WebDriverWait(driver, getDriverTimeout());
+        WebDriverWait wait = new WebDriverWait(getDriver(CHROME), getDriverTimeout());
 
         ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
             @Override

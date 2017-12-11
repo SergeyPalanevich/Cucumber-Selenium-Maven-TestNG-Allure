@@ -7,7 +7,7 @@ import static com.epam.bdd.core.drivers.DriverTypes.CHROME;
 
 public class ResultPage extends BasePage{
 
-    @FindBy(xpath = "//ul[@id='ListViewInner']/li[1]/h3")
+    @FindBy(xpath = "//ul[@id='ListViewInner']/li[@r='1']/div")
     public WebElement firstProduct;
 
     @FindBy(xpath = "//input[@value='LH_BIN']")
@@ -19,9 +19,10 @@ public class ResultPage extends BasePage{
     }
 
     public ProductPage selectFirstProduct() {
-        moveToMyElement( getDriver(CHROME), buyNowRadio);
         waitForJSLoadComplete();
+        moveToMyElement( getDriver(CHROME), buyNowRadio);
         buyNowRadio.click();
+        waitForJSLoadComplete();
         moveToMyElement( getDriver(CHROME), firstProduct);
         firstProduct.click();
         return new ProductPage(getDriver(CHROME));

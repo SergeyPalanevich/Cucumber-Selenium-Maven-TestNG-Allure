@@ -7,12 +7,12 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(id = "gh-cart-n")
-    public Element summary;
+    @FindBy(xpath = "//div[@class='pb15']")
+    public Element cart;
 
-    private static final String itemsInCart = "1";
 
-    public boolean productIsDispayed() {
-        return summary.getText().contains(itemsInCart);
+    public String getCartCount() {
+        waitForJSLoadComplete();
+        return cart.getText();
     }
 }

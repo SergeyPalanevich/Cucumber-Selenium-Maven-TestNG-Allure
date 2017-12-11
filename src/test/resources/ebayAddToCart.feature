@@ -7,9 +7,8 @@ Feature: User add product to cart on Ebay
     When User enter search criteria as "<query>"
     And User click on the Search button
     And User select first product
-    And User add to cart the product
-    And User open cart
-    Then Product is displayed in cart
+    And User add the product to cart
+    Then Product count in cart should be 1
     Examples:
       | query                |
       | Apple MacBook Pro    |

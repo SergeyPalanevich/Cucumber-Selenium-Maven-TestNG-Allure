@@ -19,9 +19,8 @@ public class HomePage extends BasePage{
     public Element searchButton;
 
     public void open() {
-        driver.get(url);
+        getDriver(CHROME).get(url);
         waitForJSLoadComplete();
-
     }
 
     public void setCritetia(String query) {

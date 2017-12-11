@@ -1,5 +1,3 @@
-package ebay.pages;
-
 import com.epam.bdd.core.ui.CustomFieldDecorator;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +12,7 @@ public class BasePage {
     protected WebDriver driver;
     private static final int DRIVER_TIMEOUT = 25;
 
-    protected BasePage(WebDriver driver){
+    protected BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new CustomFieldDecorator(driver), this);
         waitForJSLoadComplete();

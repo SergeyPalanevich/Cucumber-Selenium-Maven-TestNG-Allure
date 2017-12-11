@@ -1,5 +1,3 @@
-package ebay.pages;
-
 import com.epam.bdd.core.ui.Element;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;

@@ -1,10 +1,8 @@
-package ebay.pages;
-
 import com.epam.bdd.core.ui.Element;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class CartPage extends BasePage{
+public class CartPage extends BasePage {
     public CartPage(WebDriver driver) {
         super(driver);
     }

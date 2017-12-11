@@ -1,13 +1,9 @@
-package ebay.steps;
-
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import ebay.pages.CartPage;
-import ebay.pages.HomePage;
-import ebay.pages.ProductPage;
-import ebay.pages.ResultPage;
+
 
 import static com.epam.bdd.core.drivers.DriverManager.closeDriver;
 import static com.epam.bdd.core.drivers.DriverManager.getDriver;
@@ -20,7 +16,6 @@ public class AddToCartStep {
     private ResultPage resultpage;
     private ProductPage productpage;
     private CartPage cartpage;
-
 
     @Given("^User navigates to Ebay page$")
     public void userNavigatesToEbayPage() {
@@ -44,18 +39,22 @@ public class AddToCartStep {
     }
 
     @And("^User add to cart the product$")
-    public void userAddToCartTheProduct(){
+    public void userAddToCartTheProduct() {
         productpage.addToCart();
     }
 
     @And("^User open cart$")
-    public void userOpenCart(){
+    public void userOpenCart() {
         cartpage = productpage.openCart();
     }
 
     @Then("^Product is displayed in cart$")
-    public void productIsDisplayedInCart(){
+    public void productIsDisplayedInCart() {
         assertTrue(cartpage.productIsDispayed());
+    }
+
+    @After
+    public void terrDown() {
         closeDriver();
     }
 }

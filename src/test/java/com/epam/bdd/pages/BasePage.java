@@ -1,27 +1,26 @@
-import com.epam.bdd.core.ui.CustomFieldDecorator;
+package com.epam.bdd.pages;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.epam.bdd.core.drivers.DriverManager.getDriver;
-import static com.epam.bdd.core.drivers.DriverTypes.CHROME;
 
 public class BasePage {
 
     private static final int DRIVER_TIMEOUT = 25;
 
     protected BasePage(WebDriver driver) {
-        PageFactory.initElements(new CustomFieldDecorator(driver), this);
+        PageFactory.initElements(getDriver(), this);
         waitForJSLoadComplete();
     }
 
     protected boolean waitForJSLoadComplete() {
-        WebDriverWait wait = new WebDriverWait(getDriver(CHROME), getDriverTimeout());
+        WebDriverWait wait = new WebDriverWait(getDriver(), getDriverTimeout());
 
         ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
             @Override
@@ -55,11 +54,6 @@ public class BasePage {
         return js;
     }
 
-    protected void waitElementToBeClickable(WebDriver driver, WebElement element) {
-        waitForJSLoadComplete();
-        (new WebDriverWait(driver, getDriverTimeout()))
-                .until(ExpectedConditions.elementToBeClickable(element));
-    }
 
     protected void moveToMyElement(WebDriver driver, WebElement element) {
         waitForJSLoadComplete();

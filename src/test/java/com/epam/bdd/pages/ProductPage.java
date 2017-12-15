@@ -1,9 +1,10 @@
-import com.epam.bdd.core.ui.Element;
+package com.epam.bdd.pages;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.epam.bdd.core.drivers.DriverManager.getDriver;
-import static com.epam.bdd.core.drivers.DriverTypes.CHROME;
 
 public class ProductPage extends BasePage{
     public ProductPage(WebDriver driver) {
@@ -12,11 +13,11 @@ public class ProductPage extends BasePage{
 
 
     @FindBy(xpath = "//a[@role='button' and @vib='vib' and @id='isCartBtn_btn']")
-    public Element addToCartButton;
+    public WebElement addToCartButton;
 
 
     public CartPage addToCart() {
         addToCartButton.click();
-        return new CartPage(getDriver(CHROME));
+        return new CartPage(getDriver());
     }
 }

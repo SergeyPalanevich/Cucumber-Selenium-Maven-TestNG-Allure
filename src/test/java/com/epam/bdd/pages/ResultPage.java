@@ -1,9 +1,10 @@
+package com.epam.bdd.pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.epam.bdd.core.drivers.DriverManager.getDriver;
-import static com.epam.bdd.core.drivers.DriverTypes.CHROME;
 
 public class ResultPage extends BasePage{
 
@@ -20,11 +21,11 @@ public class ResultPage extends BasePage{
 
     public ProductPage selectFirstProduct() {
         waitForJSLoadComplete();
-        moveToMyElement( getDriver(CHROME), buyNowRadio);
+        moveToMyElement( getDriver(), buyNowRadio);
         buyNowRadio.click();
         waitForJSLoadComplete();
-        moveToMyElement( getDriver(CHROME), firstProduct);
+        moveToMyElement( getDriver(), firstProduct);
         firstProduct.click();
-        return new ProductPage(getDriver(CHROME));
+        return new ProductPage(getDriver());
     }
 }

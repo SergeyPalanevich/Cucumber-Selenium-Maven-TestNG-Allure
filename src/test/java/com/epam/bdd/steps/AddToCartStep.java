@@ -1,3 +1,9 @@
+package com.epam.bdd.steps;
+
+import com.epam.bdd.pages.CartPage;
+import com.epam.bdd.pages.HomePage;
+import com.epam.bdd.pages.ProductPage;
+import com.epam.bdd.pages.ResultPage;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -6,7 +12,6 @@ import cucumber.api.java.en.When;
 
 import static com.epam.bdd.core.drivers.DriverManager.closeDriver;
 import static com.epam.bdd.core.drivers.DriverManager.getDriver;
-import static com.epam.bdd.core.drivers.DriverTypes.CHROME;
 import static org.testng.Assert.assertTrue;
 
 
@@ -17,8 +22,8 @@ public class AddToCartStep {
     private CartPage cartpage;
 
     @Given("^User navigates to Ebay page$")
-    public void userNavigatesToEbayPage() {
-        homepage = new HomePage(getDriver(CHROME));
+    public void givenUserNavigatesToEbayPage() {
+        homepage = new HomePage(getDriver());
         homepage.open();
     }
 

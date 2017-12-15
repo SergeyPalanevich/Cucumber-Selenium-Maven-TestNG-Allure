@@ -8,15 +8,36 @@
     <artifactId>AutoTests</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <!--Reporting-->
     <properties>
+        <browser>chrome</browser>
         <aspectj.version>1.7.4</aspectj.version>
         <allure.version>{latest-allure-version}</allure.version>
     </properties>
     <!--Reporting-->
 
     <build>
-        <plugins>
+         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>write-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <outputFile>
+                                src/test/resources/config/app.properties
+                            </outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -29,7 +50,16 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>2.19.1</version>
+                <executions>
+                    <execution>
+                        <id>default-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <forkCount>6</forkCount>
                     <testFailureIgnore>true</testFailureIgnore>
@@ -117,4 +147,6 @@
         </plugins>
     </reporting>
     <!--Reporting-->
+
+
 </project>

@@ -1,5 +1,7 @@
-import com.epam.bdd.core.ui.Element;
+package com.epam.bdd.pages;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CartPage extends BasePage {
@@ -8,7 +10,7 @@ public class CartPage extends BasePage {
     }
 
     @FindBy(xpath = "//div[@class='pb15']")
-    public Element cart;
+    public WebElement cart;
 
 
     public String getCartCount() {

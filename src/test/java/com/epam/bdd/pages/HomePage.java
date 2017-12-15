@@ -1,9 +1,10 @@
-import com.epam.bdd.core.ui.Element;
+package com.epam.bdd.pages;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.epam.bdd.core.drivers.DriverManager.getDriver;
-import static com.epam.bdd.core.drivers.DriverTypes.CHROME;
 
 public class HomePage extends BasePage{
     private static final String url = "https://www.ebay.com/";
@@ -13,13 +14,13 @@ public class HomePage extends BasePage{
     }
 
     @FindBy(id = "gh-ac")
-    public Element searchField;
+    public WebElement searchField;
 
     @FindBy(xpath = "//input[@type='submit']")
-    public Element searchButton;
+    public WebElement searchButton;
 
     public void open() {
-        getDriver(CHROME).get(url);
+        getDriver().get(url);
         waitForJSLoadComplete();
     }
 
@@ -29,6 +30,6 @@ public class HomePage extends BasePage{
 
     public ResultPage runSearch() {
         searchButton.click();
-        return new ResultPage(getDriver(CHROME));
+        return new ResultPage(getDriver());
     }
 }
